@@ -7,6 +7,8 @@ from rest_framework.settings import APISettings as _APISettings
 
 from .utils import format_lazy
 
+from django.contrib.auth import get_user_model
+
 USER_SETTINGS = getattr(settings, 'SIMPLE_JWT', None)
 
 DEFAULTS = {
@@ -24,6 +26,7 @@ DEFAULTS = {
     'AUTH_HEADER_TYPES': ('Bearer',),
     'USER_ID_FIELD': 'id',
     'USER_ID_CLAIM': 'user_id',
+    'CUSTOM_USER': get_user_model()
 
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
     'TOKEN_TYPE_CLAIM': 'token_type',
